@@ -7,15 +7,16 @@ export default function FluffyTable({data}) {
 
     //
     const keys = Object.keys(data[0])
-    const headers = keys.map(v => <th>{v}</th>)
+    const headers = keys.map(v => <th key={v}>{v}</th>)
     const dataRows = data.map(obj => {
         const cols = []
 
         for(const i in obj) {
-            cols.push(<td>{obj[i]}</td>)
+            const cellKey = `${i}-${obj['id']}`
+            cols.push(<td key={cellKey}>{obj[i]}</td>)
         }
 
-        return <tr>{cols}</tr>
+        return <tr key={obj['id']}>{cols}</tr>
     })
     
     return (
