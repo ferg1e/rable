@@ -1,4 +1,4 @@
-export default function FluffyTable({data}) {
+export default function Rable({data}) {
 
     //
     if(data.length === 0) {
