@@ -20,8 +20,8 @@ export default function FluffyTable({data}) {
     
     return (
         <table>
-            <tr>{headers}</tr>
-            {dataRows}
+            <thead><tr>{headers}</tr></thead>
+            <tbody>{dataRows}</tbody>
         </table>
     )
 }
