@@ -5,6 +5,7 @@ export const data = [
       'last': 'Doe',
       'city': 'San Diego',
       'state': 'CA',
+      'age': 124,
     },
     {
       'id': 2,
@@ -12,6 +13,7 @@ export const data = [
       'last': 'Woe',
       'city': 'San Clemente',
       'state': 'CA',
+      'age': 3,
     },
     {
       'id': 3,
@@ -19,5 +21,22 @@ export const data = [
       'last': 'Watts',
       'city': 'Fort What',
       'state': 'QQ',
+      'age': 55,
+    },
+    {
+      'id': 4,
+      'first': 'Wendy',
+      'last': 'Day',
+      'city': 'Happyville',
+      'state': 'AB',
+      'age': 4022,
+    },
+    {
+      'id': 5,
+      'first': 'Tom',
+      'last': 'Blicker',
+      'city': 'Elberry',
+      'state': 'KS',
+      'age': 91,
     },
 ]
