@@ -1,14 +1,36 @@
+import { useState } from 'react';
+
 export default function Rable({data}) {
 
     //
-    if(data.length === 0) {
+    const [tableData, setTableData] = useState(data)
+
+    //
+    if(tableData.length === 0) {
         return <span>no data</span>
     }
 
     //
-    const keys = Object.keys(data[0])
-    const headers = keys.map(v => <th key={v}>{v}</th>)
-    const dataRows = data.map(obj => {
+    const keys = Object.keys(tableData[0])
+    const headers = keys.map(v => <th
+        key={v}
+        onClick={() => {
+            const newData = []
+
+            tableData.forEach((v2) => {
+                newData.push({...v2})
+            })
+
+            newData.sort((a, b) => {
+                return a[v] > b[v]
+            })
+
+            setTableData(newData)
+        }}>
+            {v}
+        </th>)
+
+    const dataRows = tableData.map(obj => {
         const cols = []
 
         for(const i in obj) {
