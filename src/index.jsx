@@ -4,6 +4,7 @@ export default function Rable({data}) {
 
     //
     const [tableData, setTableData] = useState(data)
+    const [lastSort, setLastSort] = useState(null)
 
     //
     if(tableData.length === 0) {
@@ -21,8 +22,20 @@ export default function Rable({data}) {
                 newData.push({...v2})
             })
 
+            //
+            let sortAsc = true
+
+            if(lastSort !== v) {
+                setLastSort(v)
+            }
+            else {
+                setLastSort(null)
+                sortAsc = false
+            }
+
+            //
             newData.sort((a, b) => {
-                return a[v] > b[v]
+                return sortAsc ? a[v] > b[v] : a[v] < b[v]
             })
 
             setTableData(newData)
