@@ -16,11 +16,7 @@ export default function Rable({data}) {
     const headers = keys.map(v => <th
         key={v}
         onClick={() => {
-            const newData = []
-
-            tableData.forEach((v2) => {
-                newData.push({...v2})
-            })
+            const newData = tableData.slice()
 
             //
             let sortAsc = true
