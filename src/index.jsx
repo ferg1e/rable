@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function Rable({data}) {
+export default function Rable({data, readOnly = true}) {
 
     //
     const [tableData, setTableData] = useState(data)
@@ -39,12 +39,31 @@ export default function Rable({data}) {
             {v}
         </th>)
 
-    const dataRows = tableData.map(obj => {
+    const dataRows = tableData.map((obj, i) => {
         const cols = []
 
-        for(const i in obj) {
-            const cellKey = `${i}-${obj['id']}`
-            cols.push(<td key={cellKey}>{obj[i]}</td>)
+        for(const j in obj) {
+            const cellKey = `${j}-${obj['id']}`
+            const isEditable = j !== 'id' && !readOnly
+            const td = isEditable
+                ? <td key={cellKey}><input value={obj[j]} onChange={e => {
+                    const newData = tableData.map((obj, k) => {
+                        if(k === i) {
+                            return {
+                                ...obj,
+                                [j]: e.target.value
+                            }
+                        }
+
+                        return obj
+                    })
+                    
+                    setTableData(newData)
+                }}/></td>
+
+                : <td key={cellKey}>{obj[j]}</td>
+
+            cols.push(td)
         }
 
         return <tr key={obj['id']}>{cols}</tr>
