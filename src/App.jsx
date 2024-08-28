@@ -1,12 +1,13 @@
 import Rable from './index.jsx'
-import { data } from './data.js';
+import { dataArrays, dataObjects } from './data.js';
 import './App.css'
 
 function App() {
-  return <Rable
-      data={data}
-      readOnly={false}
-  />
+  return <>
+    <Rable data={dataArrays} readOnly={false}/>
+    <br/><br/>
+    <Rable data={dataObjects} readOnly={false}/>
+  </>
 }
 
 export default App

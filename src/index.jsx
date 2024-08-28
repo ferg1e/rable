@@ -1,6 +1,18 @@
 import { useState } from 'react';
 
 export default function Rable({data, readOnly = true}) {
+    const isArrays = Array.isArray(data[0])
+
+    return isArrays
+        ? <RableArrays data={data} readOnly={readOnly}/>
+        : <RableObjects data={data} readOnly={readOnly}/>
+}
+
+function RableArrays({data, readOnly}) {
+    return <span>arrays</span>
+}
+
+function RableObjects({data, readOnly}) {
 
     //
     const [tableData, setTableData] = useState(data)

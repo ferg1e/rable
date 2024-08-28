@@ -1,4 +1,9 @@
-export const data = [
+export const dataArrays = [
+  [1, 'foo', 3],
+  ['four', 5],
+]
+
+export const dataObjects = [
     {
       'id': 1,
       'first': 'Jon',
