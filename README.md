@@ -1,6 +1,6 @@
 # Rable
 
-Rable (rhymes with table) is a React HTML table component. It converts an array of object literals into an HTML table.
+Rable (rhymes with table) is a React HTML table component. It converts an array of object literals into an HTML table. You can toggle ascending and descending sort for each column by clicking the column header. You can also edit each cell in the table that isn't a header or ID.
 
 ## Installation
 
