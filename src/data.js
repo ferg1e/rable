@@ -1,6 +1,7 @@
 export const dataArrays = [
-  [1, 'foo', 3],
+  [1, 'foo', 3, 'dog', 4, 5, 44, 33],
   ['four', 5],
+  ['four', 'cat', 'bird', 6000],
 ]
 
 export const dataObjects = [

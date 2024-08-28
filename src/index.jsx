@@ -9,7 +9,34 @@ export default function Rable({data, readOnly = true}) {
 }
 
 function RableArrays({data, readOnly}) {
-    return <span>arrays</span>
+
+    //
+    const largestLen = data.reduce(
+        (n, v) => v.length > n ? v.length : n,
+        1)
+
+    //
+    const dataRows = data.map((v, i) => {
+        const cols = []
+
+        for(let j = 0; j < largestLen; ++j) {
+            const tdKey = `${i}-${j}`
+            const tdContent = j < v.length
+                ? v[j]
+                : ''
+
+            cols.push(<td key={tdKey}>{tdContent}</td>)
+        }
+
+        return <tr key={i}>{cols}</tr>
+    })
+
+    //
+    return (
+        <table>
+            <tbody>{dataRows}</tbody>
+        </table>
+    )
 }
 
 function RableObjects({data, readOnly}) {
