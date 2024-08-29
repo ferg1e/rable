@@ -10,22 +10,41 @@ export default function Rable({data, readOnly = true}) {
 
 function RableArrays({data, readOnly}) {
 
+    const [tableData, setTableData] = useState(data)
+
     //
-    const largestLen = data.reduce(
+    const largestLen = tableData.reduce(
         (n, v) => v.length > n ? v.length : n,
         1)
 
     //
-    const dataRows = data.map((v, i) => {
+    const dataRows = tableData.map((v, i) => {
         const cols = []
 
         for(let j = 0; j < largestLen; ++j) {
             const tdKey = `${i}-${j}`
-            const tdContent = j < v.length
+            const tdContent = typeof v[j] !== 'undefined'
                 ? v[j]
                 : ''
 
-            cols.push(<td key={tdKey}>{tdContent}</td>)
+            const td = !readOnly
+                ? <td key={tdKey}><input value={tdContent} onChange={e => {
+                    const newData = tableData.map((v2, i2) => {
+                        if(i2 === i) {
+                            const newArray = v2.slice()
+                            newArray[j] = e.target.value
+                            return newArray
+                        }
+
+                        return v2
+                    })
+
+                    setTableData(newData)
+                }}/></td>
+
+                : <td key={tdKey}>{tdContent}</td>
+
+            cols.push(td)
         }
 
         return <tr key={i}>{cols}</tr>
