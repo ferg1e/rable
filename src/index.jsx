@@ -18,6 +18,13 @@ function RableArrays({data, readOnly}) {
         1)
 
     //
+    const headers = []
+
+    for(let i = 0; i < largestLen; ++i) {
+        headers.push(<th>{columnToLetter(i + 1)}</th>)
+    }
+
+    //
     const dataRows = tableData.map((v, i) => {
         const cols = []
 
@@ -53,6 +60,7 @@ function RableArrays({data, readOnly}) {
     //
     return (
         <table>
+            <thead><tr>{headers}</tr></thead>
             <tbody>{dataRows}</tbody>
         </table>
     )
@@ -133,4 +141,17 @@ function RableObjects({data, readOnly}) {
             <tbody>{dataRows}</tbody>
         </table>
     )
+}
+
+//
+function columnToLetter(column) {
+    let letter = ''
+
+    while (column > 0) {
+        const temp = (column - 1) % 26
+        letter = String.fromCharCode(temp + 65) + letter
+        column = (column - temp - 1) / 26
+    }
+
+    return letter
 }
