@@ -18,7 +18,7 @@ function RableArrays({data, readOnly}) {
         1)
 
     //
-    const headers = []
+    const headers = [<th></th>]
 
     for(let i = 0; i < largestLen; ++i) {
         headers.push(<th>{columnToLetter(i + 1)}</th>)
@@ -26,7 +26,7 @@ function RableArrays({data, readOnly}) {
 
     //
     const dataRows = tableData.map((v, i) => {
-        const cols = []
+        const cols = [<td>{i + 1}</td>]
 
         for(let j = 0; j < largestLen; ++j) {
             const tdKey = `${i}-${j}`
